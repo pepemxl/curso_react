@@ -1,3 +1,31 @@
+# Introduction to React
+## Installation of necessary dependencies:
+- Install Node.js to verify installation run 
+```sh
+$ node --version
+v10.15.3
+```
+- Install NPM to verify installation  run 
+```sh
+$ npm --version
+6.4.1
+```
+-  Run the next command to create a project, note that you can not use capital letters.
+```sh
+npx create-react-a project_todo_list
+```
+- Create a folder components inside folder src
+```sh
+mkdir src/components
+```
+
+| Class | Subject |
+| ------ | ------ |
+| Class 01 | Begining of a TODO LIST |
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -10,6 +38,7 @@ Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br>
+
 You will also see any lint errors in the console.
 
 ### `npm test`
