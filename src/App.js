@@ -30,10 +30,26 @@ class App extends Component {
     })
     console.log(this.state.list)
   }
+  removeTaskFromList=(index)=>{
+    let newList = this.state.list;
+    newList.splice(index, 1)
+    this.setState({
+      list: newList
+    })
+  }
+  checkItemFromList=(index)=>{
+    let newList = this.state.list;
+    newList[index].complete = !newList[index].complete
+    this.setState({
+      list: newList
+    })
+    console.log(this.state.list[index])
+  }
   render() {
     return (
-      <div className="App">
-        <p>NETO  ya despierta y opina!!!!!</p>
+      <div className="container">
+        <h1>Ya casi lo terminamos!!!!!</h1>
+        <h2>Ahora haz que se vea bonito!!!!</h2>
         <Header 
         inputHandler={
           this.updateTask
@@ -45,8 +61,15 @@ class App extends Component {
           this.addTaskToList
         }
         />
-        <Content listItems={
-          this.state.list
+        <Content 
+          listItems={
+            this.state.list
+          }
+          removeTaskFromList={
+            this.removeTaskFromList
+          }
+          checkItemFromList={
+            this.checkItemFromList
           }
           />
       </div>

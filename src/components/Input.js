@@ -3,7 +3,7 @@ const Input=(props)=>{
     let {inputHandler,taskValue}=props;
     return (
         <input type="text" 
-        placeholder="MUAHAHAHAHA" 
+        placeholder="Input yout task" 
         className="Input"
         onChange={inputHandler}
         value={taskValue}

@@ -8,9 +8,9 @@ const Header=(props)=>{
         clickHandler
     } = props;
     return ( 
-        <div>
-            <h1>Todo List</h1>
-            <Input 
+        <div className="card">
+            <h1 className="title">To Do List</h1>
+            <Input
             inputHandler={inputHandler}
             taskValue={taskValue}
             />
