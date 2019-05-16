@@ -18,5 +18,5 @@
   color: #A6A9AE;
 }
 .Input {
-  
+  flex-direction: row;
 }
