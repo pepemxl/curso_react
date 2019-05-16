@@ -48,8 +48,6 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <h1>Ya casi lo terminamos!!!!!</h1>
-        <h2>Ahora haz que se vea bonito!!!!</h2>
         <Header 
         inputHandler={
           this.updateTask

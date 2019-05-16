@@ -18,5 +18,64 @@
   color: #A6A9AE;
 }
 .Input {
-  flex-direction: row;
+  padding: 5px;
+  height: 30px;
+  width: 250px;
+  box-sizing: border-box;
+}
+.Button {
+  height: 30px;
+  border: none;
+  width: 80px;
+  background: #7BA6CC;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.Button:hover {
+  background: #6C94B7;
+}
+
+.classContainer {
+  width: 800px;
+  background: #F8F8F8;
+  padding: 20px;
+  box-shadow: 0px 2px 8px rgba(0,0,0,.2);
+}
+
+.ItemList {
+  width: 100%;
+  border: 2px solid #EFEFEF;
+  padding: 10px;
+  text-align: right;
+  position: relative;
+  margin-bottom: 7px;
+  box-sizing: border-box;
+}
+.Name {
+  position: absolute;
+  font-weight: 200;
+  font-family: sans-serif;
+  color: #A6A9AE;
+  top: 20px;
+}
+.ButtonAdd,.ButtonRemove {
+  width: 30px;
+  height: 30px;
+  margin: 3px;
+  border: none;
+  color:#FFFFFF;
+  background: #7BA6CC;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 600;
+  display: inline;
+  vertical-align: bottom;
+}
+.ButtonAdd:hover,.ButtonRemove:hover{
+  background:#6C94B7;
+}
+
+.ButtonRemove {
+  font-size: 16px;
 }
