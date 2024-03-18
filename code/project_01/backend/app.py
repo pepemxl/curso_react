@@ -11,7 +11,11 @@ def get_data():
         "nodes": [
             {"id": 1, "value": 10},
             {"id": 2, "value": 20},
-            {"id": 3, "value": 15}
+            {"id": 3, "value": 15},
+            {"id": 4, "value": 12},
+            {"id": 5, "value": 12},
+            {"id": 6, "value": 12},
+            {"id": 7, "value": 13},
             # Add more nodes as needed
         ],
         "links": [
@@ -23,4 +27,4 @@ def get_data():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000, debug=True)
