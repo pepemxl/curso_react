@@ -1,5 +1,6 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
+import random
 
 app = Flask(__name__)
 CORS(app)
@@ -23,6 +24,26 @@ def get_data():
             # Add more links as needed
         ]
     }
+    return jsonify(data)
+
+
+@app.route('/api/data2')
+def get_data2():
+    # Generar datos para el gráfico de red
+    num_nodes = 10
+    num_links = 15
+
+    # Generar nodos aleatorios con identificadores únicos
+    nodes = [{'id': i} for i in range(num_nodes)]
+
+    # Generar enlaces aleatorios entre los nodos
+    links = [{'source': random.randint(0, num_nodes - 1), 'target': random.randint(0, num_nodes - 1)} for _ in range(num_links)]
+
+    data = {
+        'nodes': nodes,
+        'links': links
+    }
+
     return jsonify(data)
 
 

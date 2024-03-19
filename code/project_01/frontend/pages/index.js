@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import * as d3 from 'd3';
+import Menu from '../components/Menu'
 
 const IndexPage = () => {
   const [graphData, setGraphData] = useState(null);
@@ -7,7 +8,7 @@ const IndexPage = () => {
 
   useEffect(() => {
     // Fetch data from Flask backend
-    fetch('http://localhost:5000/api/data')
+    fetch('http://localhost:5000/api/data2')
       .then(response => response.json())
       .then(data => {
         setGraphData(data);
@@ -22,45 +23,64 @@ const IndexPage = () => {
     // Clear previous graph
     svg.selectAll('*').remove();
 
-    const width = 600;
-    const height = 400;
-    const margin = { top: 20, right: 20, bottom: 30, left: 40 };
+    const width = 800;
+    const height = 600;
+    // Agrega un borde al elemento svg
+    svg.style('border', '1px solid #ccc');
 
-    const xScale = d3.scaleBand()
-      .domain(data.nodes.map(d => d.id))
-      .range([margin.left, width - margin.right])
-      .padding(0.1);
+    const simulation = d3.forceSimulation(data.nodes)
+      .force('link', d3.forceLink(data.links).id(d => d.id).distance(100))
+      .force('charge', d3.forceManyBody().strength(-200))
+      .force('center', d3.forceCenter(width / 2, height / 2));
 
-    const yScale = d3.scaleLinear()
-      .domain([0, d3.max(data.nodes, d => d.value)])
-      .nice()
-      .range([height - margin.bottom, margin.top]);
+    const link = svg.selectAll('.link')
+      .data(data.links)
+      .enter().append('line')
+      .attr('class', 'link');
 
-    const xAxis = d3.axisBottom(xScale);
-    const yAxis = d3.axisLeft(yScale);
-
-    svg.append('g')
-      .attr('transform', `translate(0,${height - margin.bottom})`)
-      .call(xAxis);
-
-    svg.append('g')
-      .attr('transform', `translate(${margin.left},0)`)
-      .call(yAxis);
-
-    svg.selectAll('.bar')
+    const node = svg.selectAll('.node')
       .data(data.nodes)
-      .enter().append('rect')
-      .attr('class', 'bar')
-      .attr('x', d => xScale(d.id))
-      .attr('y', d => yScale(d.value))
-      .attr('width', xScale.bandwidth())
-      .attr('height', d => height - margin.bottom - yScale(d.value));
+      .enter().append('circle')
+      .attr('class', 'node')
+      .attr('r', 5)
+      .call(d3.drag()
+        .on('start', dragstarted)
+        .on('drag', dragged)
+        .on('end', dragended));
+
+    simulation.on('tick', () => {
+      link.attr('x1', d => d.source.x)
+        .attr('y1', d => d.source.y)
+        .attr('x2', d => d.target.x)
+        .attr('y2', d => d.target.y);
+
+      node.attr('cx', d => d.x)
+        .attr('cy', d => d.y);
+    });
+
+    function dragstarted(event, d) {
+      if (!event.active) simulation.alphaTarget(0.3).restart();
+      d.fx = d.x;
+      d.fy = d.y;
+    }
+
+    function dragged(event, d) {
+      d.fx = event.x;
+      d.fy = event.y;
+    }
+
+    function dragended(event, d) {
+      if (!event.active) simulation.alphaTarget(0);
+      d.fx = null;
+      d.fy = null;
+    }
   };
 
   return (
-    <div>
-      <h1>Interactive Graph</h1>
-      <svg ref={svgRef} width="600" height="400"></svg>
+    <div align="center">
+      <Menu />
+      <h1>Interactive Network Graph</h1>
+      <svg ref={svgRef} width="800" height="600"></svg>
     </div>
   );
 };
