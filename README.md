@@ -1,6 +1,12 @@
 # Introduction to React
-## Installation of necessary dependencies:
-- Install Node.js to verify installation run 
+
+# Next.js
+
+**Next.js** is a React framework for building full-stack web applications. You use React Components to build user interfaces, and Next.js for additional features and optimizations.
+
+## Installation of necessary prerequisites and dependencies:
+
+- Install a Node.js to verify installation run 
 ```sh
 $ node --version
 v10.15.3

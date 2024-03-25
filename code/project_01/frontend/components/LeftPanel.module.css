@@ -1,0 +1,31 @@
+/* components/LeftPanel.module.css */
+
+.left-panel {
+    width: 200px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-right: 1px solid #ccc;
+  }
+  
+  .left-panel h2 {
+    margin-bottom: 10px;
+  }
+  
+  .left-panel ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .left-panel ul li {
+    margin-bottom: 10px;
+  }
+  
+  .left-panel ul li a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .left-panel ul li a:hover {
+    color: #666;
+  }
+  
